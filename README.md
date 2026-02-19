@@ -2,31 +2,21 @@
 🌧️ Rain Tomorrow Prediction – Machine Learning Project
 📌 Project Overview
 
-This project focuses on predicting whether it will rain tomorrow (RainTomorrow) using historical weather data from Australia. The solution applies a complete end-to-end Machine Learning pipeline including:
+This project aims to predict whether it will rain tomorrow (RainTomorrow) using historical weather data from Australia. It implements a complete end-to-end Machine Learning pipeline including data preprocessing, handling missing values, managing class imbalance, model training, and performance evaluation.
 
-Exploratory Data Analysis (EDA)
-
-Missing value handling
-
-Feature preprocessing
-
-Class imbalance handling
-
-Model training and evaluation
-
-The final model uses a Random Forest Classifier to predict rainfall for the next day.
+The final model is built using a Random Forest Classifier.
 
 📂 Dataset
 
-Dataset Name: weatherAUS.csv
+Dataset: weatherAUS.csv
 
 Target Variable: RainTomorrow (Yes/No)
 
-Type: Binary Classification
+Problem Type: Binary Classification
 
 Domain: Weather Forecasting
 
-The dataset contains multiple meteorological features such as:
+Key Features:
 
 Temperature (MinTemp, MaxTemp)
 
@@ -40,27 +30,27 @@ Pressure
 
 Cloud coverage
 
-Location & Date information
+Location and Date
 
 ⚙️ Project Workflow
-1️⃣ Data Exploration (EDA)
+1️⃣ Exploratory Data Analysis (EDA)
 
-Checked dataset structure and summary statistics
+Inspected dataset structure and data types
+
+Checked missing values
 
 Analyzed feature distributions
 
-Visualized relationships between features and target variable
+Visualized correlations
 
-Identified missing values
-
-Visualized class imbalance
+Examined class imbalance in target variable
 
 2️⃣ Data Preprocessing
-✔ Handling Missing Values
+✔ Missing Value Handling
 
-Numerical features: IterativeImputer
+Numerical features → IterativeImputer
 
-Categorical features: SimpleImputer (most_frequent)
+Categorical features → SimpleImputer (most_frequent)
 
 ✔ Feature Engineering
 
@@ -70,47 +60,47 @@ Separated numerical and categorical features
 
 ✔ Encoding
 
-Applied LabelEncoder to categorical variables
+Applied LabelEncoder for categorical variables
 
 ✔ Scaling
 
-Applied StandardScaler to normalize numerical features
+Applied StandardScaler to numerical features
 
 3️⃣ Handling Class Imbalance
 
-The dataset showed imbalance in the RainTomorrow variable.
+The dataset was imbalanced.
 
 To address this:
 
-Applied SMOTE (Synthetic Minority Over-sampling Technique)
+Applied SMOTE (Synthetic Minority Over-sampling Technique) on training data
 
-Balanced the training dataset before model training
+Balanced the minority class before training
 
 4️⃣ Model Training
 
 Model Used: Random Forest Classifier
 
-RandomForestClassifier(
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(
     n_estimators=500,
     class_weight='balanced',
     random_state=42,
     n_jobs=-1
 )
 
+Why Random Forest?
 
-Reasons for choosing Random Forest:
-
-Handles non-linearity well
+Handles non-linear relationships
 
 Robust to noise
 
-Works effectively with mixed feature types
-
 Performs well on structured tabular data
 
-5️⃣ Model Evaluation
+Reduces overfitting via ensemble learning
 
-Evaluation Metrics Used:
+📊 Model Evaluation
+Metrics Used:
 
 Accuracy
 
@@ -128,13 +118,11 @@ Example Performance:
 
 Accuracy: ~84%
 
-Strong performance on majority class
+Good balance between precision and recall
 
-Good ROC-AUC score indicating solid discrimination ability
+Strong ROC-AUC indicating reliable discrimination
 
-The confusion matrix and ROC-AUC were visualized for better interpretability.
-
-📊 Technologies & Libraries
+🛠️ Technologies & Libraries
 
 Python
 
